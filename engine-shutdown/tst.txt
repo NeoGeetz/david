@@ -2,20 +2,20 @@
 //- the dependent function has more than one instruction to step through
 //- the output prints to terminal for feedback
 //- the result of the program cannot be predicted from analysis of the source code alone
-#include "engine.h"
-
+#include <stdio.h>
+#include <stdlib.h>
 
 int main (int argn,char** args) {
-    int  v               ;
-    long input[11] = {0} ;
+    int a[2][3] ;
     
+    a[0][0] = 1 ;
+    a[1][0] = 2 ;
+    a[2][0] = 3 ;
 
-    scanfN (8,input) ;
-    for (int i = 0;i < 11;i ++) {
-        printf ("input[%d] = %ld\n",i,input[i]) ;
-    }
+    a[0][2] = 3 ;
+    a[1][0] = 4 ;
+    a[0][1] = 5 ;
+    a[1][2] = 6 ;
     
-
-    
-    return 0 ;
+    return 0                   ;
 }
