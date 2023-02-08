@@ -1,0 +1,50 @@
+### input ##
+first  line: N (1..11)
+second line: T T ... (Tn)
+line +0    : V V ... (Vn)
+...
+line +(N-1): V V ... (Vn)
+
+
+
+#example with 3 possible actions
+- spraying the engine with foam
+- cuttoing off the air supply to the engine
+- disconnecting the power from the engine
+
+3 * 2 * 1
+
+first  line: 3          #foam, air, disconnect
+second line: 5 7 9
+
+____________ afterfoam  afterair    afterdisconn
+line_+0____: XX(foam)   40(foam)    49(foam)      
+...._______: 25(air)    XX(air)     40(air)       
+line_+2____: 39(discon) 40(disconn) XX(disconn)   
+
+
+
+
+
+
+#example with 4 possible actions
+----------------
+- spraying the engine with foam
+- cutting  off the air supply to the engine
+- disconnecting the power from the engine
+- sprinkling lemon juice on it
+
+4 * 3 * 2 * 1
+
+
+first  line: 4          #foam, air, disconnect, lemon
+second line: 5 7 9 27
+
+____________ afterfoam  afterair    afterdisconn afterlemon
+line_+0____: XX(foam)   40(foam)    49(foam)     45(foam)    
+...._______: 25(air)    XX(air)     40(air)      45(air)     
+...._______: 39(discon) 40(disconn) XX(disconn)  45(disconn) 
+line_+3____: 39(lemon)  40(lemon)   49(lemon)    XX(lemon)   
+
+
+for permutations that are ties: we can chose any one to print
