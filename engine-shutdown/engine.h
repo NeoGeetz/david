@@ -11,9 +11,16 @@
 typedef struct {
     //N could be 1..11, let's just allocate the max memory we'd need and play with the sub
     //matrices for the actual use case
-    long isolated [11]     ;
-    long dependent[11][11] ;
+    long initial_deltas [11]     ;
+    long dependent      [11][11] ;//row is the "i" corresponding with nomenclature professsor uses
 } deltaTable ;
+
+typedef struct {
+    int actions[11] ;//just to make sure we have enough space, might only be 3 for example
+} simulation ;
+
+
+//nextDelta = deltaTable.dependent[current][previous]
 
 //function only safe if we guarantee that we are passing it buffer of at least 11 elements
 void scanfN (int N,long* buf11) ;
