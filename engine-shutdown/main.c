@@ -6,15 +6,14 @@
 
 
 int main (int argn,char** args) {
-    int  v               ;
-    long input[11] = {0} ;
+    int     v   ;
+    array11 set ;
     
+    set.elements[0] = 1 ;
+    set.elements[1] = 2 ;
+    set.elements[2] = 3 ;
 
-    scanfN (8,input) ;
-    for (int i = 0;i < 11;i ++) {
-        printf ("input[%d] = %ld\n",i,input[i]) ;
-    }
-    
+    unwrap_permutation (3,set) ;
 
     
     return 0 ;

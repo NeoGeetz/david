@@ -1,0 +1,38 @@
+void func ()
+    buffer[8] X
+    var       A
+    var2      B
+
+[X buffer 8]
+[X buffer 8]
+[X buffer 8]
+[X buffer 8]
+[X buffer 8]
+[X buffer 8]
+[X buffer 8]
+[X buffer 8]
+[A var    1]
+[B var    2]
+[B var    2]
+
+~
+
+
+
+void func (buffer[8] X,var A,var2 B)
+
+[X buffer 8]
+[X buffer 8]
+[X buffer 8]
+[X buffer 8]
+[X buffer 8]
+[X buffer 8]
+[X buffer 8]
+[X buffer 8]
+[A var    1]
+[B var    2]
+[B var    2]
+
+~
+
+

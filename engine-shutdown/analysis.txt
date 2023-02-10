@@ -1,0 +1,184 @@
+int unwrap_permutation_ (int N,array11 reference,array11 accumulated,int depth) {
+    enum {USED=-1} ;
+
+    //deepest level, end recursion
+    if (depth == N) {
+        //[X X X X X 8 X]
+        //[X X 3 X X X X]
+        for (int i = 0;i < N;i ++) 
+            if (reference.elements[i] != USED) 
+                accumulated.elements[depth-1] = reference.elements[i] ;
+    
+        printf ("[") ;
+        for (int i = 0;i < depth;i ++) printf ("%-4d ",accumulated.elements[i]) ;
+        printf ("]\n") ;
+    }
+    //continue to deepest 
+    else for (int i = 0;i < N;i ++) {
+        if (reference.elements[i] != USED) {
+            int saved = reference.elements[i]                       ;
+            reference.elements[i]         = USED                    ;
+            accumulated.elements[depth-1] = saved                   ;//building up our choice
+            unwrap_permutation_ (N,reference,accumulated,depth + 1) ;
+            reference.elements[i] = saved                           ;
+        }
+    }
+    return 0 ;
+}
+
+unwrap_permutation (3,[1 2 3],[],1) {
+    if (1 == 3) !
+    else  {
+        for:0 {
+            saved       = reference[0]
+            accumulated <-(saved)
+            unwrap_permutation (3,[X 2 3],[1],2) {
+                if (2 == 3) !
+                else {
+                    for:0 !
+                    for:1 {
+                        saved          = reference[1]
+                        accumulated   <- (saved)
+                        unwrap_permutation (3,[X X 3],[1 2],3) {
+                            if (3 == 3) DONE (accmulated = [1 2 3])
+                        }
+                        reference[1] = (saved)
+                    }
+                    for:2 {
+                        saved          = reference[2]
+                        accumulated   <- (saved)
+                        unwrap_permutation (3,[X 2 X],[1 3],3) {
+                            if (3 == 3) DONE (accmulated = [1 3 2])
+                        }
+                        reference[2] = (saved)
+                    }
+                }
+            }
+            reference[0]   = (saved)
+        }
+        for:1 {
+            saved          = reference[1]
+            accumulated   <- (saved)
+            unwrap_permutation (3,[1 X 3],[2],2) {
+                if (2 == 3) !
+                else {
+                    for:0 {
+                        saved        = reference[0]
+                        accumulated <- (saved)
+                        unwrap_permutation (3,[X X 3],[2 1],3) {
+                            if (3 == 3) DONE (accmulated = [2 1 3])
+                        }
+                        reference[0] = (saved)
+                    }
+                    for:1 !
+                    for:2 {
+                        saved        = reference[2]
+                        accumulated <- (saved)
+                        unwrap_permutation (3,[1 X X],[2 3],3) {
+                            if (3 == 3) DONE (accmulated = [2 3 1])
+                        }
+                        reference[2] = (saved)
+                    }
+                }
+            }
+            reference[1]   = (saved)
+        }
+        for:2 {
+            saved        =  reference[2]
+            accumulated <- (saved)
+            unwrap_permutation (3,[1 2 X],[3],2) {
+                if (2 == 3) !
+                else {
+                    for:0 {
+                        saved        = reference[0]
+                        accumulated <- (saved)
+                        unwrap_permutation (3,[X 2 X],[3 1],3) {
+                            if (3 == 3) DONE (accmulated = [3 1 2])
+                        }
+                        reference[0] = (saved)
+                    }
+                    for:1 {
+                        saved        = reference[1]
+                        accumulated <- (saved)
+                        unwrap_permutation (3,[1 X X],[3 2],3) {
+                            if (3 == 3) DONE (accmulated = [3 2 1])
+                        }
+                        reference[1] = (saved)
+                    }
+                    for:2 !
+                }
+            }
+            reference[2]   = (saved)
+        }
+    }
+}
+
+
+unwrap_permutation (3,[1 2 3],[],1) {
+    if (1 == 3) !
+    else  {
+        for:0 {
+            ACCUMULATE reference[0]
+            unwrap_permutation (3,[X 2 3],[1],2) {
+                if (2 == 3) !
+                else {
+                    for:0 !
+                    for:1 {
+                        ACCMULUATE reference[1] 
+                        unwrap_permutation (3,[X X 3],[1 2],3) {
+                            if (3 == 3) DONE (accmulated = [1 2 3])
+                        }
+                    }
+                    for:2 {
+                        ACCUMULATE reference[2]
+                        unwrap_permutation (3,[X 2 X],[1 3],3) {
+                            if (3 == 3) DONE (accmulated = [1 3 2])
+                        }
+                    }
+                }
+            }
+        }
+        for:1 {
+            ACCUMULATE reference[1]
+            unwrap_permutation (3,[1 X 3],[2],2) {
+                if (2 == 3) !
+                else {
+                    for:0 {
+                        ACCUMULATE reference[0]
+                        unwrap_permutation (3,[X X 3],[2 1],3) {
+                            if (3 == 3) DONE (accmulated = [2 1 3])
+                        }
+                    }
+                    for:1 !
+                    for:2 {
+                        ACCUMULATE reference[2]
+                        unwrap_permutation (3,[1 X X],[2 3],3) {
+                            if (3 == 3) DONE (accmulated = [2 3 1])
+                        }
+                    }
+                }
+            }
+        }
+        for:2 {
+            ACCUMULATE reference[2]
+            unwrap_permutation (3,[1 2 X],[3],2) {
+                if (2 == 3) !
+                else {
+                    for:0 {
+                        ACCUMULATE reference[0]
+                        unwrap_permutation (3,[X 2 X],[3 1],3) {
+                            if (3 == 3) DONE (accmulated = [3 1 2])
+                        }
+                    }
+                    for:1 {
+                        ACCUMULATE reference[1]
+                        unwrap_permutation (3,[1 X X],[3 2],3) {
+                            if (3 == 3) DONE (accmulated = [3 2 1])
+                        }
+                    }
+                    for:2 !
+                }
+            }
+        }
+    }
+}

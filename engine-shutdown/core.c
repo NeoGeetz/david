@@ -52,7 +52,12 @@ long try_ (simulation event,deltaTable* characteristics,int actionRange) {
 
 //probably needs more parameters, at least 1
 //buffer with marking out used will probably help
-int unwrap_permutation (int N) {
+
+
+//first call ... unwrap_permutation (N,actions,1)
+int unwrap_permutation_ (int N,array11 reference,array11 accumulated,int depth) {
+    enum {USED=-1} ;
+
     //0 1 2
     // 0 2...
 
@@ -88,46 +93,50 @@ int unwrap_permutation (int N) {
     // ---
     // 
     // ...
+
+    //deepest level, end recursion
+    if (depth == N) {
+        //[X X X X X 8 X]
+        //[X X 3 X X X X]
+        for (int i = 0;i < N;i ++) 
+            if (reference.elements[i] != USED) 
+                accumulated.elements[depth-1] = reference.elements[i] ;
     
-    //unwrap_perm
+        printf ("[") ;
+        for (int i = 0;i < depth;i ++) printf ("%-4d ",accumulated.elements[i]) ;
+        printf ("]\n") ;
+    }
+    //continue to deepest 
+    else for (int i = 0;i < N;i ++) {
+        if (reference.elements[i] != USED) {
+            int saved = reference.elements[i]                       ;
+            reference.elements[i]         = USED                    ;
+            accumulated.elements[depth-1] = saved                   ;//building up our choice
+            unwrap_permutation_ (N,reference,accumulated,depth + 1) ;
+            reference.elements[i] = saved                           ;
+        }
+    }
+    return 0 ;
 }
+
+
+
+//A B X Y
+
+//A B X Y
+//A B Y X
+//....
+int unwrap_permutation (int N,array11 set) {
+    array11 accumulate ;
+    if (N == 0) N = 1  ;//0! is considered to return 1
+    return unwrap_permutation_ (N,set,accumulate,1) ;
+}
+
+//simulation best_simulation
+//int        best_temp_change
 
 simulation bestTemperatureReductionScenario (deltaTable* characteristics,int actionRange) {
     int possibleSimulations = fact (actionRange) ;
-
-    // //
-    // //[0 1 2]
-
-    // //[X 1 2]
-    //     //[X 1 2]
-
-    //     //[X X 2]
-    //         //[* * *]
-    //         ^^^
-    //     ---
-    //     //[X 1 X]
-    //         //[* * *]
-    //         ^^^
-    //     ---
-    //     ^^^
-    // ---
-
-    // //[0 X 2]
-    //     //[0 X 2]
-
-    //     //[X X 2]
-    //         //[* * *]
-    //         ^^^
-    //     ---
-    //     //[0 X X]
-    //         //[* * *]
-    //         ^^^
-    //     ---
-    //     ^^^
-    // ---
-    // 
-    // ...
-
 
     //example of 3 possible actions
     //[0] [1] [2]

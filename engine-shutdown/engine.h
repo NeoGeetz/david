@@ -19,8 +19,14 @@ typedef struct {
     int actions[11] ;//just to make sure we have enough space, might only be 3 for example
 } simulation ;
 
+typedef struct {
+    int elements[11] ;
+} array11 ;
+
 
 //nextDelta = deltaTable.dependent[current][previous]
 
 //function only safe if we guarantee that we are passing it buffer of at least 11 elements
-void scanfN (int N,long* buf11) ;
+void scanfN             (int N,long* buf11) ;
+
+int  unwrap_permutation (int N,array11 set) ;
