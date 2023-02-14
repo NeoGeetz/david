@@ -8,11 +8,75 @@
 
 //long is guranteed => -2bil ... +2bil
 
+
+//enum {FOAM=12,AIR=14,DISCONN=20,LEMON=100} ;
+//
+//typedef struct {
+//    int table[1000] ;
+//    int hash_to_index (const char*) ;
+//} dictionary ;
+//
+//typedef struct {
+//    dictionary after_FOAM    ; //after_FOAM[FOAM] not allowed, after_FOAM[AIR] is a valid temp-change constant
+//    dictionary after_AIR     ;
+//    dictionary after_DISCONN ;
+//    dictionary after_LEMON   ;
+//    
+//    //after_FOAM["air"]
+//} deltaOptions ;
+
+//typedef struct {
+//    enum {FOAM=0,AIR=1,DISCONN=2,LEMON=3} ;
+//    long FOAM_after_FOAM  ; //temp change
+//    long  AIR_after_FOAM  ;
+//    long LEMN_after_FOAM  ;
+//    long DCON_after_FOAM  ;
+//    long FOAM_after_AIR   ;
+//    long  AIR_after_AIR   ;
+//    long LEMN_after_AIR   ;
+//    long DCON_after_AIR   ;
+//    //...
+//} deltaOptions ;
+//switch (currentAction) {
+//    case FOAM:
+//        switch (lastAction) {
+//            case FOAM:   
+//            case AIR : tempChange = characteristics.FOAM_AFTER_AIR ;   
+//        }
+//    case AIR :
+//}
+
+
+//typedef struct {
+//    enum {FOAM=0,AIR=1,DISCONN=2,LEMON=3} ;
+//    long after_FOAM   [4] ; //after_FOAM[FOAM] not allowed, after_FOAM[AIR] is a valid temp-change constant
+//    long after_AIR    [4] ;
+//    long after_DISCONN[4] ;
+//    long after_LEMON  [4] ; => long after_X[4][4]
+
+//} deltaList ;
+//switch (lastAction) {
+//    case FOAM: tempChange = characteristics.after_FOAM   [currentAction_idx] ;
+//    case AIR : tempChange = characteristics.after_AIR    [currentAction_idx] ;
+//    case DCON: tempChange = characteristics.after_DISCONN[currentAction_idx] ;
+//    case LEMN: tempChange = characteristics.after_LEMON  [currentAction_idx] ;
+//}
+
+//    long after_1st[4] ; //after_FOAM[FOAM] not allowed, after_FOAM[AIR] is a valid temp-change constant
+//    long after_2nd[4] ;
+//    long after_3rd[4] ;
+//    long after_4th[4] ; => long after_X[4][4]
+
+//tempChange = characteristicts.actions[currentAction][lastAction]
+
 typedef struct {
     //N could be 1..11, let's just allocate the max memory we'd need and play with the sub
     //matrices for the actual use case
     long initial_deltas [11]     ;
     long dependent      [11][11] ;//row is the "i" corresponding with nomenclature professsor uses
+
+    //dependent[3][4] => temperature change when performing "3" right after "4" happened
+    //dependent[3][5] => temperature change when performing "3" right after "5" happened
 } deltaTable ;
 
 typedef struct {

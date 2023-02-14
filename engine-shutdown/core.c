@@ -55,7 +55,7 @@ long try_ (simulation event,deltaTable* characteristics,int actionRange) {
 
 
 //first call ... unwrap_permutation (N,actions,1)
-int unwrap_permutation_ (int N,array11 reference,array11 accumulated,int depth) {
+int unwrap_permutation_ (int N, array11 reference,array11 accumulated,int depth) {
     enum {USED=-1} ;
 
     //0 1 2
@@ -119,8 +119,6 @@ int unwrap_permutation_ (int N,array11 reference,array11 accumulated,int depth) 
     return 0 ;
 }
 
-
-
 //A B X Y
 
 //A B X Y
@@ -135,24 +133,60 @@ int unwrap_permutation (int N,array11 set) {
 //simulation best_simulation
 //int        best_temp_change
 
-simulation bestTemperatureReductionScenario (deltaTable* characteristics,int actionRange) {
-    int possibleSimulations = fact (actionRange) ;
+//ie return 1,4,3,2
+//simulation type could store a value like [1 4 3 2] ....
 
-    //example of 3 possible actions
-    //[0] [1] [2]
-    //[0] [2] [1]
-    //[1] [0] [2]
-    //[1] [2] [0]
-    //[2] [0] [1]
-    //[2] [1] [0]
+//ie N == 4
+//of possible actions 1 2 3 4, which permutation is the BEST temp reduction
 
-    //[0] [1] [2]
-    //[1] [0] [2]
-    //[2] [0] [1]
-    //[0] [2] [1]
-    //[1] [2] [0]
-    //[2] [1] [0]
+//team A did 1 2 4 3
+//team B did 1 3 4 2
 
+//let's assume, team B cooled their engine the best
+//therefore, we return THEIR simulation [1 3 42]
+
+//for the first call, currentAction == 1, accumulated is treated as "empty" [X X X ...],netTempChange = 0
+simulation bestTemperatureReductionScenario (int maxActions,deltaTable* characteristics ,array11 possibilities,int currentAction,simulation accumulated,int netTempChange) {
+    enum {ALREADY_DONE=-1} ;
+    
+    //[1 2 3 4]
+    //[X 2 3 4] //([2 3 4])
+
+    //[1 2 3 4]
+    //[1 2] (max{2} current{1})
+    //[X 2] (max{2} current{2})
+    //[X X] (max{2} current{3})
+
+    if (currentAction == maxActions + 1) {
+        //accmulated stores a complete unwrapped simulation of max-actions
+        
+    }
+    
+    for   (int = 0;i < maxActions;i ++) {
+        if (possibilities.elements[i] == ALREADY_DONE) continue ;
+        //[X 2 3 4]
+        
+        int actionTempChange                                          ;
+        int currentAction_idx                     = currentAction - 1 ;
+        accumulated.actions   [currentAction_idx] = possibilities[i]  ;
+
+        int chosen_action                         = accmulated.actions[currentAction_idx    ] ;
+        if (currentAction == 1) actionTempChange  = characteristics->initial_deltas[chosen_action] ;
+        else {
+            int last_chosen_action = accumlated.actions        [currentAction_idx - 1]                 ;
+            actionTempChange       = characteristics->dependent[chosen_action-1][last_chosen_action-1] ;
+        }
+        netTempChange = 
+        
+        
+
+        int saved                               = possibilities.elements[i]         ;
+        possibilities.elements[i]               = ALREADY_DONE                      ;
+        bestTemperatureReductionScenario (maxActions,characteristics,possibilities,currentAction+1,accumulated,netTempChange) ;
+        possibilities.elements[i]               = saved                             ;
+    }
+
+    return
 }
 
 
