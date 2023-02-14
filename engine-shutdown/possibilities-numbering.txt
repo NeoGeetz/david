@@ -1,0 +1,16 @@
+{MOW_THE_LAWN TAKE_OUT_TRASH WASH_DISHES CLEAN_CAR DUST_OFF_COMPUTER_CIRCUITS LAUNDRY}
+{1            2              3           4         5                          6      }
+
+
+{"mow_the_lawn" "
+{1 2 3....
+
+
+{SPAWN IDLE WALK RUN DASH JUMP_FWD JUMP_BWD JUMP_UP DODGE_ROLL CRAWL SLIDE PUNCH KICK SWORD GUN GUN_DISCHARGE GUN_RELOAD GUN_RAPIDFIRE SPECIAL_ATK1 SPECIAL_ATK2 DEBUG}
+{0     10   11   12  13   14       15       16      17         18    19    20    30   40    50  51            52         53            60           61           99   }
+
+IDLE,RUN,JUMP_UP,DODGE_ROLL,GUN_DISCHARGE,SPECIAL_ATK1
+
+10,12,14....
+1 ,3 ,....
+

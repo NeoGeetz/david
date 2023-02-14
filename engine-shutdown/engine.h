@@ -1,3 +1,4 @@
+#pragma once
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -84,6 +85,13 @@ typedef struct {
 } simulation ;
 
 typedef struct {
+    char a,b,c ;
+} thing ; 
+//&thing          SAME "ADDRESS" AS               &thing.a
+//(&thing +1)     not the same "next address" as (&thing.a) + 1
+//(char*)(&thing) SAME EXACT     THING AS         &thing.a
+
+typedef struct {
     int elements[11] ;
 } array11 ;
 
@@ -91,6 +99,10 @@ typedef struct {
 //nextDelta = deltaTable.dependent[current][previous]
 
 //function only safe if we guarantee that we are passing it buffer of at least 11 elements
-void scanfN             (int N,long* buf11) ;
+void       scanfN                           (int N,long* buf11)   ;
+int        unwrap_permutation               (int N,array11 set)   ;
+void       printi_arr                       (void* array_,int sz) ;
+void       printl_arr                       (void* array_,int sz) ;
+void       printl_mat                       (void* m,int rows,int cols) ;
+simulation bestTemperatureReductionScenario (int maxActions,deltaTable* characteristics ,array11 possibilities,int currentAction,simulation accumulated,int netTempChange) ;
 
-int  unwrap_permutation (int N,array11 set) ;
