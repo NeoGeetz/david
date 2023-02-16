@@ -9,7 +9,7 @@ int main (int argn,char** args) {
     enum {A=1,B,C,D}         ;
     deltaTable dt            ;
     array11    possibilities ;
-    simulation acc ;//just for testing, treat as empty
+    simulation best_result  ;
     
     possibilities.elements[0] = A ;
     possibilities.elements[1] = B ;
@@ -50,6 +50,11 @@ int main (int argn,char** args) {
     printf     ("-----\n") ;
     printf     ("-----\n") ;
     
-    bestTemperatureReductionScenario (4,&dt,possibilities,1,acc,0) ;
+    best_result =
+    bestTemperatureReductionScenario (sz,&dt,possibilities) ;
+    
+    printf     ("-. the best temperation reduction scenario is ._\n") ;
+    printi_arr (&best_result,sz) ;
+
     return 0 ;
 }

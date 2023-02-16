@@ -190,8 +190,9 @@ int unwrap_permutation (int N,array11 set) {
 
 //for the first call, currentAction == 1, accumulated is treated as "empty" [X X X ...],netTempChange = 0
 
-int global_variable ;
-simulation bestTemperatureReductionScenario (int maxActions,deltaTable* characteristics ,array11 possibilities,int currentAction,simulation accumulated,int netTempChange) {
+int        currentLowest    ;
+simulation lowestSimulation ;
+void bestTemperatureReductionScenario (int maxActions,deltaTable* characteristics ,array11 possibilities,int currentAction,simulation accumulated,int netTempChange) {
     enum {USED=-1} ;
     
     //[1 2 3 4]
@@ -207,7 +208,11 @@ simulation bestTemperatureReductionScenario (int maxActions,deltaTable* characte
         printf     ("try simulation: net-temp-change [action-sequence ...] -> %6d ",netTempChange) ;
         printi_arr (&accumulated,maxActions)                                                       ;
         
-        return accumulated ;
+        if (netTempChange < currentLowest) {
+            currentLowest    = netTempChange ;
+            lowestSimulation = accumulated   ;
+        }
+        return ;
     }
     
     for   (int i = 0;i < maxActions;i ++) {
@@ -225,10 +230,12 @@ simulation bestTemperatureReductionScenario (int maxActions,deltaTable* characte
             int last_chosen_action = accumulated.actions       [currentAction_idx - 1]                 ;
             actionTempChange       = characteristics->dependent[chosen_action-1][last_chosen_action-1] ;
         }
+        
         netTempChange             = netTempChange + actionTempChange ;
 
         int saved                 = possibilities.elements[i]                                                                 ;
         possibilities.elements[i] = USED                                                                                      ;
+        //toss away the result, keeping track of best net-reductions across calls by using global variable
         bestTemperatureReductionScenario (maxActions,characteristics,possibilities,currentAction+1,accumulated,netTempChange) ;
         possibilities.elements[i] = saved                                                                                     ;
         
@@ -238,8 +245,15 @@ simulation bestTemperatureReductionScenario (int maxActions,deltaTable* characte
         //array11 rem_possilibities = possibilities             ;
         //rem_possilibities[i]      = USED ;
     }
+    
+}
 
-    return  accumulated ; //WRONG but just want to compile for now
+simulation bestTemperatureReductionScenario (int maxActions,deltaTable* characteristics,array11 possibilities) {
+    simulation accumulated ;//"empty"
+    currentLowest = 99999  ;
+    //lowestSimulation = 
+    bestTemperatureReductionsScenario (maxAction,characteristics,possibilities,1,accumulated,0) ;
+    return lowestSimulation ;
 }
 
 
