@@ -1,0 +1,8 @@
+big O for the 5 well-known sorting algorithms
+
+
+insert,select,bubble => all n^^2  , BEST : insert & bubble = n
+quick,merge          => all n logn, WORST: quick           = n ^^ 2
+
+
+
