@@ -6,23 +6,32 @@
 #include <stdlib.h>
 
 void print     (int* a,int sz,int low,int high,int i_,int j_) {
+    int inside = 0 ;
     if (low  == -1) low  = 0      ;
     if (high == -1) high = sz - 1 ;
     printf ("[") ;
     for (int i = 0;i < sz;i ++) {
-        char sym[3] = "X_" ;
-        if      (i == low )      sym[0] = 'L' ;
-        else if (i == high)      sym[0] = 'H' ;
-        else                     sym[0] = '_' ;
-        if (i_ != -1 && i_ == i) {
-            if (j_ == i_) sym[1] = '%' ;
-            else          sym[1] = 'i' ;
-        }
-        else if (j_ != -1 && j_ == i) sym[1] = 'j' ;
-        
-        printf ("%s%-4d ",sym,a[i]) ;
+        printf ("%-4d ",a[i]) ;
     }
     printf ("]\n") ;
+
+    printf ("#") ;
+    for (int i = 0;i < sz;i ++) {
+        if (i == low) inside = 1 ;
+
+        if (inside) {
+            if (i == i_ && i == j_)     printf ("mmmm ") ;
+            else
+            if (i == i_)                printf ("rrrr ") ;
+            else
+            if (i == j_)                printf ("gggg ") ;
+            else                        printf ("bbbb ") ;
+        }
+        else                            printf ("#### ") ;
+
+        if (i == high) inside = 0 ;
+    }
+    printf ("# #%%#\n") ;
 }
 
 void swap (int* a,int i0,int i1) {
@@ -42,26 +51,26 @@ int partition (int* a,int low_idx,int high_idx) {
     pivot_value = a[high_idx ] ;
     i           = low_idx - 1  ;//seems to be safe because even when low is 0, -1 is always added 1 before actually being used
 
-    printf ("\tpivot (%4d)\n",pivot_value)  ;
+    printf ("############# PIVOT (%4d) ################\n",pivot_value)  ;
     
     for (int j = low_idx;j <= high_idx - 1;j ++) {
         //[3 4 9 8 *5]
         
         if (a[j] < pivot_value) {
-            printf ("\t(swap {%4d}&{%4d}) ",a[i+1],a[j])     ;
+            printf ("\t([%d %d] swap {%4d}&{%4d})\n",i,j,a[i+1],a[j])  ;
             print  (a,quicksort_size,low_idx,high_idx,i,j) ;
 
             i = i + 1      ;
             swap   (a,i,j) ;
         }
         else {
-            printf ("\t(no-swap           ) ") ;
+            printf ("\t(no-swap           )\n") ;
             print  (a,quicksort_size,low_idx,high_idx,i,j) ;
         }
     }
     //at end of loop, i + 1 is .. the index of a slot
 
-    printf ("\t(eswp {%4d}&{%4d}) ",a[i + 1] ,a[high_idx]) ;
+    printf ("\t([%d %d] eswp {%4d}&{%4d})\n",i,high_idx,a[i + 1] ,a[high_idx]) ;
     print  (a,quicksort_size,low_idx,high_idx,i,-1)      ;
     swap   (a,i + 1,high_idx)                            ;
 
@@ -102,14 +111,14 @@ int main (int argn,char** args) {
         sz = sz + 1                     ;
     }
 
-    printf ("got  array:       ") ;
-    print  (arr,sz,-1,-1,-1,-1)   ;
+    printf ("got  array:       \n") ;
+    print  (arr,sz,-1,-1,-1,-1)     ;
     
-    quicksort (arr,sz)            ;
+    quicksort (arr,sz)              ;
 
-    printf ("sort array:       ") ;
-    print  (arr,sz,-1,-1,-1,-1)   ;
-    return 0                      ;
+    printf ("sort array:       \n") ;
+    print  (arr,sz,-1,-1,-1,-1)     ;
+    return 0                        ;
 }
 
 

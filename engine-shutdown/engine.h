@@ -104,5 +104,6 @@ int        unwrap_permutation               (int N,array11 set)   ;
 void       printi_arr                       (void* array_,int sz) ;
 void       printl_arr                       (void* array_,int sz) ;
 void       printl_mat                       (void* m,int rows,int cols) ;
-simulation bestTemperatureReductionScenario (int maxActions,deltaTable* characteristics ,array11 possibilities,int currentAction,simulation accumulated,int netTempChange) ;
+void       bestTemperatureReductionScenario_(int maxActions,deltaTable* characteristics ,array11 possibilities,int currentAction,simulation accumulated,int netTempChange) ;
+simulation bestTemperatureReductionScenario (int maxActions,deltaTable* characteristics ,array11 possibilities) ;
 

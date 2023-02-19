@@ -16,29 +16,29 @@ int main (int argn,char** args) {
     possibilities.elements[2] = C ;
     possibilities.elements[3] = D ;
     
-    dt.initial_deltas[A-1] = -5 ;
-    dt.initial_deltas[B-1] = -4 ;
-    dt.initial_deltas[C-1] = -9 ;
-    dt.initial_deltas[D-1] = -6 ;
+    dt.initial_deltas[A-1] = -10;
+    dt.initial_deltas[B-1] = -20;
+    dt.initial_deltas[C-1] = 3  ;
+    dt.initial_deltas[D-1] = 999;
     
-    dt.dependent[A-1][A-1] = 999  ;
-    dt.dependent[A-1][B-1] = -4   ;
-    dt.dependent[A-1][C-1] = -3   ;
-    dt.dependent[A-1][D-1] = -14  ;
+    dt.dependent[A-1][A-1] = 0    ;
+    dt.dependent[A-1][B-1] = 5    ;
+    dt.dependent[A-1][C-1] = 9    ;
+    dt.dependent[A-1][D-1] = 999  ;
 
-    dt.dependent[B-1][A-1] = -7   ;
-    dt.dependent[B-1][B-1] = 999  ;
-    dt.dependent[B-1][C-1] = -9   ;
-    dt.dependent[B-1][D-1] = -2   ;
+    dt.dependent[B-1][A-1] = -13  ;
+    dt.dependent[B-1][B-1] = 0    ;
+    dt.dependent[B-1][C-1] = -12  ;
+    dt.dependent[B-1][D-1] = 999  ;
 
-    dt.dependent[C-1][A-1] = -1   ;
-    dt.dependent[C-1][B-1] = -20  ;
-    dt.dependent[C-1][C-1] = 999  ;
-    dt.dependent[C-1][D-1] = +10  ;
+    dt.dependent[C-1][A-1] = -5   ;
+    dt.dependent[C-1][B-1] = -4   ;
+    dt.dependent[C-1][C-1] = 0    ;
+    dt.dependent[C-1][D-1] = 999  ;
     
-    dt.dependent[D-1][A-1] = +5   ;
-    dt.dependent[D-1][B-1] = -10  ;
-    dt.dependent[D-1][C-1] = -5   ;
+    dt.dependent[D-1][A-1] = 999  ;
+    dt.dependent[D-1][B-1] = 999  ;
+    dt.dependent[D-1][C-1] = 999  ;
     dt.dependent[D-1][D-1] = 999  ;
 
     printf     ("initial-deltas => ")     ;
@@ -50,11 +50,13 @@ int main (int argn,char** args) {
     printf     ("-----\n") ;
     printf     ("-----\n") ;
     
+    int maxActions = 3 ;
+    
     best_result =
-    bestTemperatureReductionScenario (sz,&dt,possibilities) ;
+    bestTemperatureReductionScenario (maxActions,&dt,possibilities) ;
     
     printf     ("-. the best temperation reduction scenario is ._\n") ;
-    printi_arr (&best_result,sz) ;
+    printi_arr (&best_result,maxActions) ;
 
     return 0 ;
 }
