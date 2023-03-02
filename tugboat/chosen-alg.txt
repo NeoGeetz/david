@@ -1,0 +1,119 @@
+   [ CHOSEN - - - CHOSEN - -    CHOSEN CHOSEN  -            -     CHOSEN  ]
+   [ X      Y P T Xa     L MONA David  Pierson Vanderbrandt Chuck Charles ]
+
+want just X -> Xa -> David -> Pierson -> Charles
+
+want the first one
+   [ CHOSEN - - - CHOSEN - -    CHOSEN CHOSEN  -            -     CHOSEN  ]
+   [ X      Y P T Xa     L MONA David  Pierson Vanderbrandt Chuck Charles ]
+     out:X
+    
+want the 3rd one
+
+
+how_many_chosen_seen? (s)
+   [ CHOSEN - - - CHOSEN - -    CHOSEN CHOSEN  -            -     CHOSEN  ]
+   [ X      Y P T Xa     L MONA David  Pierson Vanderbrandt Chuck Charles ]
+     1      1 1 1 2      2 2    3                       
+                                out:David
+#%+%#
+CHOOSE{4th chosen (index 3)}
+"choose"           == 3
+chosen_encountered == 0 (use this to know if we've arrived at the index of the chosen element)
+BOOLEAN:   | * - - - *  - -    *     *       -            -     *       | (stored attribute)
+MEM-INDEX: | 0 1 2 3 4  5 6    7     8       9            10    11      | (implicit attribute (array offset))
+ORDER:     | 0 - - - 1  - -    2     3       -            -     4       | (not a stored attribute)
+THE_STUFF: [ X Y P T Xa L MONA David Pierson Vanderbrandt Chuck Charles ] (stored attribute/information)
+             ?
+#%+%#
+CHOOSE{4th chosen (index 3)}
+"choose"           == 3
+chosen_encountered == 1 (use this to know if we've arrived at the index of the chosen element)
+BOOLEAN:   | * - - - *  - -    *     *       -            -     *       | (stored attribute)
+MEM-INDEX: | 0 1 2 3 4  5 6    7     8       9            10    11      | (implicit attribute (array offset))
+ORDER:     | 0 - - - 1  - -    2     3       -            -     4       | (not a stored attribute)
+THE_STUFF: [ X Y P T Xa L MONA David Pierson Vanderbrandt Chuck Charles ] (stored attribute/information)
+               ?
+#%+%#
+CHOOSE{4th chosen (index 3)}
+"choose"           == 3
+chosen_encountered == 1 (use this to know if we've arrived at the index of the chosen element)
+BOOLEAN:   | * - - - *  - -    *     *       -            -     *       | (stored attribute)
+MEM-INDEX: | 0 1 2 3 4  5 6    7     8       9            10    11      | (implicit attribute (array offset))
+ORDER:     | 0 - - - 1  - -    2     3       -            -     4       | (not a stored attribute)
+THE_STUFF: [ X Y P T Xa L MONA David Pierson Vanderbrandt Chuck Charles ] (stored attribute/information)
+                 ?
+#%+%#
+CHOOSE{4th chosen (index 3)}
+"choose"           == 3
+chosen_encountered == 1 (use this to know if we've arrived at the index of the chosen element)
+BOOLEAN:   | * - - - *  - -    *     *       -            -     *       | (stored attribute)
+MEM-INDEX: | 0 1 2 3 4  5 6    7     8       9            10    11      | (implicit attribute (array offset))
+ORDER:     | 0 - - - 1  - -    2     3       -            -     4       | (not a stored attribute)
+THE_STUFF: [ X Y P T Xa L MONA David Pierson Vanderbrandt Chuck Charles ] (stored attribute/information)
+                   ?
+#%+%#
+CHOOSE{4th chosen (index 3)}
+"choose"           == 3
+chosen_encountered == 1 (use this to know if we've arrived at the index of the chosen element)
+BOOLEAN:   | * - - - *  - -    *     *       -            -     *       | (stored attribute)
+MEM-INDEX: | 0 1 2 3 4  5 6    7     8       9            10    11      | (implicit attribute (array offset))
+ORDER:     | 0 - - - 1  - -    2     3       -            -     4       | (not a stored attribute)
+THE_STUFF: [ X Y P T Xa L MONA David Pierson Vanderbrandt Chuck Charles ] (stored attribute/information)
+                     ?
+#%+%#
+CHOOSE{4th chosen (index 3)}
+"choose"           == 3
+chosen_encountered == 2 (use this to know if we've arrived at the index of the chosen element)
+BOOLEAN:   | * - - - *  - -    *     *       -            -     *       | (stored attribute)
+MEM-INDEX: | 0 1 2 3 4  5 6    7     8       9            10    11      | (implicit attribute (array offset))
+ORDER:     | 0 - - - 1  - -    2     3       -            -     4       | (not a stored attribute)
+THE_STUFF: [ X Y P T Xa L MONA David Pierson Vanderbrandt Chuck Charles ] (stored attribute/information)
+                        ?
+#%+%#
+CHOOSE{4th chosen (index 3)}
+"choose"           == 3
+chosen_encountered == 2 (use this to know if we've arrived at the index of the chosen element)
+BOOLEAN:   | * - - - *  - -    *     *       -            -     *       | (stored attribute)
+MEM-INDEX: | 0 1 2 3 4  5 6    7     8       9            10    11      | (implicit attribute (array offset))
+ORDER:     | 0 - - - 1  - -    2     3       -            -     4       | (not a stored attribute)
+THE_STUFF: [ X Y P T Xa L MONA David Pierson Vanderbrandt Chuck Charles ] (stored attribute/information)
+                          ?
+#%+%#
+CHOOSE{4th chosen (index 3)}
+"choose"           == 3
+chosen_encountered == 2 (use this to know if we've arrived at the index of the chosen element)
+BOOLEAN:   | * - - - *  - -    *     *       -            -     *       | (stored attribute)
+MEM-INDEX: | 0 1 2 3 4  5 6    7     8       9            10    11      | (implicit attribute (array offset))
+ORDER:     | 0 - - - 1  - -    2     3       -            -     4       | (not a stored attribute)
+THE_STUFF: [ X Y P T Xa L MONA David Pierson Vanderbrandt Chuck Charles ] (stored attribute/information)
+                               ?
+#%+%#
+CHOOSE{4th chosen (index 3)}
+"choose"           == 3
+chosen_encountered == 3 (use this to know if we've arrived at the index of the chosen element)
+BOOLEAN:   | * - - - *  - -    *     *       -            -     *       | (stored attribute)
+MEM-INDEX: | 0 1 2 3 4  5 6    7     8       9            10    11      | (implicit attribute (array offset))
+ORDER:     | 0 - - - 1  - -    2     3       -            -     4       | (not a stored attribute)
+THE_STUFF: [ X Y P T Xa L MONA David Pierson Vanderbrandt Chuck Charles ] (stored attribute/information)
+                                     ?
+#%+%#
+CHOOSE{4th chosen (index 3)} (FOUND IT)
+"choose"           == 3
+chosen_encountered == 3 (use this to know if we've arrived at the index of the chosen element)
+BOOLEAN:   | * - - - *  - -    *     *       -            -     *       | (stored attribute)
+MEM-INDEX: | 0 1 2 3 4  5 6    7     8       9            10    11      | (implicit attribute (array offset))
+ORDER:     | 0 - - - 1  - -    2     3       -            -     4       | (not a stored attribute)
+THE_STUFF: [ X Y P T Xa L MONA David Pierson Vanderbrandt Chuck Charles ] (stored attribute/information)
+                                     !
+#%+%#
+CHOOSE{4th chosen (index 3)} (RETURN)
+"choose"           == 3
+chosen_encountered == 3 (use this to know if we've arrived at the index of the chosen element)
+BOOLEAN:   | * - - - *  - -    *     *       -            -     *       | (stored attribute)
+MEM-INDEX: | 0 1 2 3 4  5 6    7     8       9            10    11      | (implicit attribute (array offset))
+ORDER:     | 0 - - - 1  - -    2     3       -            -     4       | (not a stored attribute)
+THE_STUFF: [ X Y P T Xa L MONA David Pierson Vanderbrandt Chuck Charles ] (stored attribute/information)
+                                     !
+return 8 (! is at index +8 from entire array)
+#%+%#

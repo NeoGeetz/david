@@ -1,0 +1,65 @@
+int   array[10] ;
+char  cs   [10] ;
+float farr [5]  ;
+
+farr[0]
+..
+farr[4]
+
+
+"string" ?
+
+what is a string ?
+
+it is a *loose* term that is tossed around in programming contexts
+"strings" are understood to be the way to store ~linguistic "words"
+
+"abc @#$% ok"
+
+the "idea" of a string
+
+the common "implementation" of a string
+
+no rules on how the "idea" of a string is implemented
+
+"lots" of different techniques out there
+
+
+try this:...
+
+A) a string is an array of characters but the first character is the length of the string
+B) a string is an array of characters and the last character is always the value "0" (so we can figure out the length if we loop)
+C) combo of both, a string is an array of characters with size marked at the beginning but *also* null terminated
+
+D) a string is a block of 256 characters (can never be too long)
+   the last character marked as 0
+
+E) a string is a block of 256 characters (can never be too long)
+   store an extra "size" parameter in the struct definition
+
+
+F) a string is a block of 256 characters (can never be too long)
+   store an extra "size" parameter in the struct definition
+   also use null byte at end
+
+struct our_string {
+    int  size      ;
+    char data[256] ;//easy, just set a limit to how big a string can be
+} ;
+
+//say we just want to get the input first and parse into a nice structure after
+char lineOfBoats[MAX_BOATS * MAX_STRING_LENGTH] ;
+char lineOfBoats[MAX_BOATS * 256]               ;
+
+
+our_string lineOfBoats[MAX_BOATS] ;
+
+char idea_memory[4]    ; //"idea"
+char idea_memory[5]    ; //"idea", \0
+char idea_memory[1000] ; //"idea", \0 .....
+char idea_memory[MAX]  ; //"idea", \0 .....
+
+"idea" where is it stored, where does it live ?
+
+
+

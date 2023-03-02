@@ -1,0 +1,18 @@
+anything % 4 => 0 1 2 3 0 1 2 3 0 1 2 3 ...
+
+
+if we're treating this value 1 so as to mean the "first"
+
+then you would want to take value and do (value - 1) % 4
+
+
+4 as the last value would be "index" 3
+
+0 1 2 3
+
+
+4 % 4 == 0
+because
+% means divide then remainder
+
+4 /4 = 1 R 0

@@ -1,0 +1,20 @@
+//not sure could be 1000 or 1000000 or even 1 bil (multiple gigs of ram)
+//programmers encourage each other to use the dynamic memory section of programs
+
+//know exactly what you want and it's a small size
+//using stack is probably fine, dynamic allocation would also be fine, really just a design
+//choice at that point and have to do with what you're considerations are
+
+//not sure, but pretty damn confident it won't be tooo big.
+//maybe advised to use the stack and decide an upper limit that you can commit to
+
+//not sure but pretty sure that value range will be in between 1 and 300 or 1 and 100
+//just make an array of the size of the upper limit and then you can index based on the 
+//actual "variable" size
+
+//may want to do error checking if you are sure about the limit but not sure if the
+//index values you play with will be correct values (in correct range)
+
+
+
+int array[not_sure]
